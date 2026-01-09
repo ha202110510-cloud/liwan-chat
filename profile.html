@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>الملف الشخصي - ليوان</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <style>
+    /* ====== إعدادات عامة ====== */
+    body {
+      margin: 0;
+      font-family: 'Tajawal', Arial, sans-serif;
+      background: #f7fafc;
+      min-height: 100vh;
+      display: flex;
+    }
+
+    /* ====== Sidebar ====== */
+    .liwan-sidenav {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 80px;
+      height: 100vh;
+      background: #4c6b82;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 30px;
+      box-shadow: 2px 0 18px rgba(40,54,90,0.07);
+      z-index: 1000;
+    }
+    .liwan-sidenav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .liwan-sidenav li {
+      margin-bottom: 25px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+    .liwan-side-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      color: #f8ebd7;
+      font-size: 24px;
+      text-decoration: none;
+      position: relative;
+      transition: background 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .liwan-side-link:hover {
+      background: #365069;
+      box-shadow: 0 3px 18px rgba(31,59,77,0.13);
+    }
+    .liwan-side-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  color: #f8ebd7;
+  font-size: 24px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.liwan-icon-label {
+  position: absolute;
+  top: 50%;
+  left: 100%; /* مباشرة يمين الـ sidebar */
+  transform: translateY(-50%);
+  opacity: 0;
+  pointer-events: none;
+  background: #1f3b4d;
+  color: #f8ebd7;
+  padding: 8px 18px;
+  border-radius: 0 10px 10px 0;
+  white-space: nowrap;
+  font-size: 1em;
+  font-weight: 600;
+  transition: opacity 0.25s, left 0.2s;
+  box-shadow: 2px 2px 14px rgba(31,59,77,0.15);
+}
+
+.liwan-side-link:hover .liwan-icon-label {
+  opacity: 1;
+  pointer-events: auto;
+  left: 65px; /* يعطي مسافة بين الأيقونة والكتابة */
+}
+
+    /* ====== Main container ====== */
+    .main-wrapper {
+      margin-left: 80px; /* يترك مساحة للsidebar */
+      width: calc(100% - 80px);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 60px;
+    }
+
+    .container {
+      background: #fff8f0;
+      padding: 35px 25px;
+      border-radius: 16px;
+      box-shadow: 0 6px 26px rgba(0,0,0,0.15);
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .welcome {
+      font-size: 1.9rem;
+      margin-bottom: 20px;
+      color: #bc6c25;
+      font-weight: 700;
+    }
+
+    .profile-img {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      border: 3px solid #f6bd60;
+      object-fit: cover;
+      background: #ffeedd;
+      display: block;
+      box-shadow: 0 2px 12px rgba(237,201,136,0.25);
+    }
+    .profile-img.empty {
+      background: #ffe6c7 url('https://cdn-icons-png.flaticon.com/512/9131/9131529.png') center/48px no-repeat;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      margin: 20px 0 8px;
+      color: #bc6c25;
+      text-align: right;
+    }
+
+    .features-list {
+      text-align: right;
+      margin: 0 0 15px 0;
+      padding-left: 14px;
+      font-size: 1.05em;
+      color: #685554;
+    }
+
+    .features-list li {
+      margin-bottom: 6px;
+    }
+
+    .access-label {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 18px;
+      font-size: 0.95em;
+      background: #f6bd60;
+      color: #813405;
+      margin-bottom: 12px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      .liwan-sidenav { width: 65px; }
+      .liwan-side-link { width: 48px; height: 48px; font-size: 21px; }
+      .liwan-side-link .liwan-icon-label { font-size: .95em; padding:6px 12px; min-width: 50px; }
+      .main-wrapper { margin-left: 65px; width: calc(100% - 65px); }
+      .container { padding: 25px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <nav class="liwan-sidenav" aria-label="شريط التنقل الجانبي">
+    <ul>
+      <li><a href="home.html" class="liwan-side-link"><i class="fas fa-home"></i><span class="liwan-icon-label">الرئيسية</span></a></li>
+      <li><a href="profile.html" class="liwan-side-link"><i class="fas fa-user-circle"></i><span class="liwan-icon-label">الملف الشخصي</span></a></li>
+      <li><a href="chat.html" class="liwan-side-link"><i class="fas fa-comments"></i><span class="liwan-icon-label">الدردشة</span></a></li>
+      <li><a href="activities.html" class="liwan-side-link"><i class="fas fa-calendar-alt"></i><span class="liwan-icon-label">الأنشطة</span></a></li>
+      <li><a href="store.html" class="liwan-side-link"><i class="fas fa-store"></i><span class="liwan-icon-label">المتجر</span></a></li>
+      <li><a href="transport.html" class="liwan-side-link"><i class="fas fa-bus"></i><span class="liwan-icon-label">التنقلات</span></a></li>
+      <li><a href="it-support.html" class="liwan-side-link"><i class="fas fa-headset"></i><span class="liwan-icon-label">الدعم التقني</span></a></li>
+      <li><a href="about.html" class="liwan-side-link"><i class="fas fa-circle-info"></i><span class="liwan-icon-label">عن ليوان</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- Main content -->
+  <div class="main-wrapper">
+    <div class="container" id="main-section">
+      <div class="welcome" id="welcome-msg">مرحباً بك في صفحتك الشخصية</div>
+      <img id="profileImg" class="profile-img empty" alt="صورة الحساب" />
+
+      <div id="features-section">
+        <div class="access-label">صلاحيات المستخدم</div>
+        <div class="section-title">المزايا المتاحة:</div>
+        <ul class="features-list">
+          <li>المحادثة العامة مفتوحة (Public Chat)</li>
+          <li>التفاعل في متجر المنتجات</li>
+          <li>المشاركة في الفعاليات والتنقل</li>
+          <li>عرض وإدارة الملف الشخصي</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const profileImg = document.getElementById("profileImg");
+    const welcomeMsg = document.getElementById("welcome-msg");
+
+    const userEmail = localStorage.getItem("userEmail") || "مستخدم جديد";
+    const userFullName = localStorage.getItem("userFullName") || "";
+
+    profileImg.src = "default-avatar.jpeg";
+    if(!userFullName && !userEmail) profileImg.classList.add("empty");
+
+    welcomeMsg.textContent = `مرحباً بك، ${userFullName || userEmail}!`;
+  </script>
+</body>
+</html>
